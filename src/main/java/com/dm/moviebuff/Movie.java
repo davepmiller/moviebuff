@@ -6,9 +6,11 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Data @NoArgsConstructor @AllArgsConstructor
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 class Movie {
-  private @Getter @Setter String name;
-  private @Getter @Setter String genre;
-  private @Getter @Setter int rating;
+    private @Getter @Setter String name;
+    private @Getter @Setter String genre;
+    private @Getter @Setter int rating;
 }
