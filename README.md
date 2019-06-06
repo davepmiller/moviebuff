@@ -4,7 +4,7 @@
 # moviebuff-api
 Spring Boot Rest API
 
-## Run Pre-built Docker Image (path of least resistance)
+## Run pre-built Docker image 
 
 1. Install Docker on Mac (skip this step if you already have docker installed):
     * [Download Docker](https://download.docker.com/mac/stable/Docker.dmg)
