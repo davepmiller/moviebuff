@@ -47,12 +47,7 @@ class Repository {
     }
 
     void deleteMovie(String movieName) {
-        for (Movie movie : this.movies) {
-            if (movie.getName().equals(movieName)) {
-                this.movies.remove(movie);
-                return;
-            }
-        }
+        this.movies.removeIf(m -> m.getName().equals(movieName));
     }
 
     Movie updateMovie(String movieName, Movie newData) {
