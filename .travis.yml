@@ -1,5 +1,6 @@
 dist: xenial
 language: java
+jdk:
+  - openjdk11
 script:
-  - mvn compile
-  - mvn test
+  - ./gradlew build --stacktrace --console=plain
