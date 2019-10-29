@@ -1,4 +1,4 @@
-package com.dm.moviebuff;
+package com.davepmiller.moviebuff;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

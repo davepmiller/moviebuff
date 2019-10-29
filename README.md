@@ -44,29 +44,21 @@ Install dependencies for Mac:
     brew cask install java
     ```
 
-3. Install Maven
-    ```bash
-    # Check for existing
-    mvn -version
-    # Install if you don't have it
-    brew install maven
-    ```
-
-4. Install Git
+3. Install Git
     ```bash
     git --version
     brew install git
     ```
 
-5. Clone Repo
+4. Clone Repo
     ```bash
     git clone https://github.com/DaveyLaser/moviebuff-api.git
     ```
 
-6. Build and run
+5. Build and run
     ```bash
     cd moviebuff-api
-    mvn spring-boot:run
+   ./gradlew build && java -jar build/libs/moviebuff-api-0.0.1-SNAPSHOT.jar
     ```
    
 7. View in your browser: [http://localhost:8080/api/movies](http://localhost:8080/api/movies)

@@ -1,4 +1,4 @@
-package com.dm.moviebuff;
+package com.davepmiller.moviebuff;
 
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
