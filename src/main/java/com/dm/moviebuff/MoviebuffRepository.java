@@ -7,7 +7,7 @@ class MoviebuffRepository {
     private List<Movie> movies;
 
     MoviebuffRepository() {
-        this.movies = new CopyOnWriteArrayList<Movie>();
+        this.movies = new CopyOnWriteArrayList<>();
         Movie highFidelity = new Movie("High Fidelity", "Comedy", 4);
         Movie darkCrystal = new Movie("The Dark Crystal", "Fantasy", 5);
         Movie purpleRain = new Movie("Purple Rain", "Romance", 3);
@@ -18,12 +18,12 @@ class MoviebuffRepository {
         this.movies.add(heat);
     }
 
-    public List<Movie> getMovies() {
+    List<Movie> getMovies() {
         return this.movies;
     }
 
-    public String[] getGenres() {
-        String[] genres = {
+    String[] getGenres() {
+        return new String[]{
             "Suspense",
             "Comedy",
             "Romance",
@@ -35,11 +35,9 @@ class MoviebuffRepository {
             "Documentary",
             "Drama"
         };
-
-        return genres;
     }
 
-    public Movie addMovie(Movie movie) {
+    Movie addMovie(Movie movie) {
         if (this.movieExists(movie)) {
             return null;
         } else {
@@ -48,18 +46,16 @@ class MoviebuffRepository {
         }
     }
 
-    public Movie deleteMovie(String movieName) {
+    void deleteMovie(String movieName) {
         for (Movie movie : this.movies) {
             if (movie.getName().equals(movieName)) {
                 this.movies.remove(movie);
-                return movie;
+                return;
             }
         }
-
-        return null;
     }
 
-    public Movie updateMovie(String movieName, Movie newData) {
+    Movie updateMovie(String movieName, Movie newData) {
         for (Movie movie : this.movies) {
             if (movie.getName().equals(movieName)) {
                 movie.setName(newData.getName());
@@ -73,12 +69,6 @@ class MoviebuffRepository {
     }
 
     private boolean movieExists(Movie movieToLookFor) {
-        for (Movie movie : this.movies) {
-            if (movie.getName().equals(movieToLookFor.getName())) {
-                return true;
-            }
-        }
-
-        return false;
+        return this.movies.stream().anyMatch(m -> m.getName().equals(movieToLookFor.getName()));
     }
 }
