@@ -3,10 +3,10 @@ package com.dm.moviebuff;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
-class MoviebuffRepository {
+class Repository {
     private List<Movie> movies;
 
-    MoviebuffRepository() {
+    Repository() {
         this.movies = new CopyOnWriteArrayList<>();
         Movie highFidelity = new Movie("High Fidelity", "Comedy", 4);
         Movie darkCrystal = new Movie("The Dark Crystal", "Fantasy", 5);

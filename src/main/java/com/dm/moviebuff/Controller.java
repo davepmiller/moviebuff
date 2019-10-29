@@ -4,11 +4,11 @@ import java.util.List;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-public class MoviebuffController {
-    private MoviebuffRepository repository;
+public class Controller {
+    private Repository repository;
 
-    MoviebuffController() {
-        this.repository = new MoviebuffRepository();
+    Controller() {
+        this.repository = new Repository();
     }
 
     @CrossOrigin(origins = "http://localhost:3000")
