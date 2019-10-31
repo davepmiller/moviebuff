@@ -1,43 +1,63 @@
 package com.davepmiller.moviebuff;
 
 import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class Controller {
-    private Repository repository;
+    private Service service;
 
-    Controller() {
-        this.repository = new Repository();
+    @Autowired
+    Controller(Service service) {
+        this.service = service;
     }
 
     @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/api/movie-genres")
-    public String[] movieGenres() {
-        return this.repository.getGenres();
+    public String[] getGenres() {
+        return service.getGenres();
     }
 
     @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/api/movies")
-    public List<Movie> movies() {
-        return this.repository.getMovies();
+    public List<Movie> getMovies() {
+        return service.getMovies();
+    }
+
+    @CrossOrigin(origins = "http://localhost:3000")
+    @GetMapping("/api/movies/{id}")
+    public Movie getMovie(@RequestBody Long id) {
+        return service.getMovie(id);
     }
 
     @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping("/api/movies")
-    public Movie newEmployee(@RequestBody Movie newEmployee) {
-        return this.repository.addMovie(newEmployee);
+    public Movie create(@RequestBody Movie movie) {
+        if (this.service.createMovie(movie)) {
+            return movie;
+        }
+
+        return movie;
     }
 
     @CrossOrigin(origins = "http://localhost:3000")
-    @DeleteMapping("/api/movies/{name}")
-    public void deleteMovie(@PathVariable String name) {
-        this.repository.deleteMovie(name);
+    @DeleteMapping("/api/movies/{id}")
+    public void delete(@PathVariable Long id) {
+        if (this.service.deleteMovie(id)) {
+
+        } else {
+
+        }
     }
 
     @CrossOrigin(origins = "http://localhost:3000")
-    @PutMapping("/api/movies/{name}")
-    public Movie updateMovie(@PathVariable String name, @RequestBody Movie newData) {
-        return this.repository.updateMovie(name, newData);
+    @PutMapping("/api/movies/{id}")
+    public Movie update(@RequestBody Movie movie) {
+        if (service.updateMovie(movie)) {
+            return movie;
+        }
+
+        return movie;
     }
 }
